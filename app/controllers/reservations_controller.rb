@@ -12,7 +12,7 @@ class ReservationsController < ApplicationController
     @reservation.user = @user
     @reservation.course = @course
     if @reservation.save
-      redirect_to user_path(@user)
+      redirect_to root
     else
       redirect_to new_course_reservation_path
     end
@@ -21,7 +21,7 @@ class ReservationsController < ApplicationController
   def destroy
     @reservation = Reservation.find(params[:id])
     @reservatio.destroy
-    redirect_to user_path(@review.restaurant)
+    redirect_to root
   end
 
   private
