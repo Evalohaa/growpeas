@@ -14,6 +14,7 @@ class CoursesController < ApplicationController
 
   def create
     @course = Course.new(course_params)
+    @course.user = current_user
     if @course.save
       redirect_to course_path(@course), notice: "Course was created!"
     else
@@ -33,7 +34,8 @@ class CoursesController < ApplicationController
   private
 
   def course_params
-    params.require(:course).permit(:name, :duration, :starting_time, :date, :description, :price, :address, :user_id, :activity_id, :max_of_attendees)
+    params.require(:course).permit(:name, :duration, :starting_time, :date, :description, :price, :address, :user_id,
+      :activity_id, :max_of_attendees)
   end
 
 end
