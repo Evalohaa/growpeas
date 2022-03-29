@@ -1,36 +1,41 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+<div class="navbar sticky-top navbar-expand-sm navbar-light navbar-lewagon">
   <div class="container-fluid">
+    <%= link_to "#", class: "navbar-brand" do %>
     <div class="d-flex align-items-center">
-      <a class="navbar-brand me-1" href="#">
-        <%= image_tag "icon_growpeas.png", alt: "GrowPeas Logo" %>
-      </a>
-      <h2 class="m-0">GrowPeas</h2>
-    </div>
+        <%= image_tag "icon_growpeas.png" %>
+        <h2 class="m-0">GrowPeas</h2>
+      </div>
+    <% end %>
+
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto">
+        <%# if user_signed_in? %>
           <li class="nav-item active">
-            <a class="nav-link" href="#">Home</a>
+            <%= link_to "Home", root_path, class: "nav-link" %>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Mes cours</a>
+            <%= link_to "Mes cours", "#", class: "nav-link" %>
           </li>
-          <li class="nav-item active">
-            <a class="nav-link" href="#">Trouvé un cours</a>
+          <li class="nav-item">
+            <%= link_to "Trouvé un cours", "#", class: "nav-link" %>
           </li>
           <li class="nav-item dropdown">
-            <img class="avatar dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="https://kitt.lewagon.com/placeholder/users/ssaunier" />
+            <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#">Mon profil</a>
-              <a class="dropdown-item" href="#">Paramètres</a>
-              <a class="dropdown-item" href="#">Déconnecter</a>
+              <%= link_to "Action", "#", class: "dropdown-item" %>
+              <%= link_to "Another action", "#", class: "dropdown-item" %>
+              <%#= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
             </div>
           </li>
+        <%# else %>
           <!--li class="nav-item"-->
+            <%#= link_to "Login", new_user_session_path, class: "nav-link" %>
           <!--/li-->
+        <%# end %>
       </ul>
     </div>
   </div>
