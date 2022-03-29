@@ -1,0 +1,12 @@
+<%= simple_form_for(@course) do |f| %>
+  <%= f.input :name %>
+  <%= f.input :duration %>
+  <%= f.input :starting_time %>
+  <%= f.input :date %>
+  <%= f.input :description %>
+  <%= f.input :price %>
+  <%= f.input :address %>
+  <%= f.input :max_of_attendees %>
+  <%= f.association :activity %>
+  <%= f.submit %>
+<% end %>

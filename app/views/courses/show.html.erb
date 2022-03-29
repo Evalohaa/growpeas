@@ -1,1 +1,13 @@
-<h1>Coucou je suis la view de courses - show</h1>
+<h1>Cours</h1>
+<h2><%= @course.name %></h2>
+
+<%= @course.name %>
+  <%= @course.name %>
+  <%= @course.duration %>
+  <%= @course.starting_time %>
+  <%= @course.date %>
+  <%= @course.description %>
+  <%= @course.price %>
+  <%= @course.address %>
+  <%= @course.max_of_attendees %>
+<%= link_to "Retour aux cours", courses_path %>
