@@ -11,3 +11,9 @@
   <%= @course.address %>
   <%= @course.max_of_attendees %>
 <%= link_to "Retour aux cours", courses_path %>
+<%= link_to 'Supprimer',
+                    course_path(@course),
+                    method: :delete,
+                    data: { confirm: "Are you sure?" } %>
+
+<%= link_to "Modifier", edit_course_path(@course) %>
