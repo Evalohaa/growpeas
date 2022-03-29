@@ -1,5 +1,4 @@
 class ReservationsController < ApplicationController
-
   def new
   end
 
@@ -8,5 +7,4 @@ class ReservationsController < ApplicationController
 
   def destroy
   end
-
 end
