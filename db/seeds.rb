@@ -14,12 +14,12 @@ Course.destroy_all
 Activity.destroy_all
 Category.destroy_all
 
-cat_sport = Category.create(name: "sport")
-cat_musique = Category.create(name: "musique")
-cat_arts = Category.create(name: "arts")
-cat_langues = Category.create(name: "langues")
-cat_cuisine = Category.create(name: "cuisine")
-cat_artisanat = Category.create(name: "artisanat")
+cat_sport = Category.create(name: "sport", color: "#829EC0")
+cat_musique = Category.create(name: "musique", color: "#cdad96")
+cat_arts = Category.create(name: "arts", color: "#114560")
+cat_langues = Category.create(name: "langues", color: "#7D7122")
+cat_cuisine = Category.create(name: "cuisine", color: "#C88355")
+cat_artisanat = Category.create(name: "artisanat", color: "#383435")
 
 sport_activities = %w[yoga ski fitness nage]
 
