@@ -1,0 +1,7 @@
+<h1>User <%=@user.id%> <%=@user.first_name%> <%=@user.last_name%></h1>
+<ul><%@user.reservations.each do |reservation|%>
+  <li><%= reservation.details%> - <%= reservation.course.name%> <%= link_to "Delete", reservation_path(reservation), method: :delete %></li>
+<%end%>
+</ul>
+<%= link_to "My courses", courses_path%>
+<%= link_to "Home", root_path%>

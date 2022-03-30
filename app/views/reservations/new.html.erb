@@ -1,0 +1,7 @@
+<h1>Test pour la vue de la creation d'une reservation</h1>
+<br>
+
+<%= simple_form_for [@course, @reservation] do  |f| %>
+  <%= f.input :details %>
+  <%= f.submit%>
+<% end %>
