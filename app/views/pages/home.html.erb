@@ -1,10 +1,8 @@
-
-<%= link_to "Mon compte", user_path(current_user)%>
 <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://cdn.pixabay.com/photo/2015/04/20/17/39/man-731900_1280.jpg);">
   <div class="container">
     <h1>GrowPeas</h1>
     <p>Post or join classes of all kind near you!</p>
-    <a class="btn btn-success rounded-5 shadow" href="#">Sign up now!</a>
+    <%= link_to "Sign-up now", new_user_registration_path, class: "btn btn-success rounded-5 shadow"%>
   </div>
 </div>
 <br>
