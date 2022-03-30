@@ -1,7 +1,21 @@
-<h1>Tous les cours disponibles</h1>
-<% @courses.each do |course| %>
-<li>
-  <%= course.name %>
-  <%= link_to "Voir les détails du cours", course_path(course) %>
-</li>
-<% end %>
+
+<div class="container mx-auto my-4">
+  <div class="d-flex align-items-center m-3 mb-0">
+    <div class="title">
+      <h1>Tous les cours disponibles</h1>
+    </div>
+  </div>
+  <div class="row">
+    <% @courses.each do |course| %>
+    <div class="col-md-4 my-3">
+      <div class="card sport">
+        <%= image_tag "woman_sport.jpg" %>
+        <div class="card-body">
+          <h3 class="card-title"><%= course.name %></h3>
+          <p class="card-text"><%= link_to "Voir les détails du cours", course_path(course) %></p>
+        </div>
+      </div>
+    </div>
+    <% end %>
+  </div>
+</div>

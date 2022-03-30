@@ -1,6 +1,6 @@
 <div class="navbar sticky-top navbar-expand-sm navbar-light navbar-lewagon">
   <div class="container-fluid">
-    <%= link_to "#", class: "navbar-brand" do %>
+    <%= link_to root_path, class: "navbar-brand" do %>
     <div class="d-flex align-items-center">
         <%= image_tag "icon_growpeas.png" %>
         <h2 class="m-0">GrowPeas</h2>
@@ -21,13 +21,19 @@
             <%= link_to "Tous les courses", courses_path, class: "nav-link" %>
           </li>
           <li class="nav-item">
-            <%= link_to "Trouvé un cours", "#", class: "nav-link" %>
+            <%= link_to "Trouver un cours", "#", class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Créer un nouveau cours", new_course_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "My account", user_path(current_user), class: "nav-link" %>
           </li>
           <li class="nav-item dropdown">
             <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
               <%= link_to "Mon Compte", user_path(current_user), class: "dropdown-item" %>
-              <%#= link_to "Another action", "#", class: "dropdown-item" %>
+              <%= link_to "Modifier mon profil", edit_user_registration_path, class: "dropdown-item" %>
               <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
             </div>
           </li>

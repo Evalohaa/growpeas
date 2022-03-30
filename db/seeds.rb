@@ -51,7 +51,8 @@ cuisine_activities.each do |name|
   Activity.create(name: name, category: cat_cuisine)
 end
 
-artisanat_activities = %w[couture macramé]
+artisanat_activities = %w[couture macramé encadrement]
+
 artisanat_activities.each do |name|
   Activity.create(name: name, category: cat_artisanat)
 end
