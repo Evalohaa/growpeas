@@ -9,6 +9,8 @@
   # %w[yoga ski fitness nage cuisine-thaï cuisine-italienne potterie peinture sculpture chinois italien
   # russe ukrainien roumain violon piano guitare chant ukulele]
 
+
+Course.destroy_all
 Activity.destroy_all
 Category.destroy_all
 
@@ -17,6 +19,7 @@ cat_musique = Category.create(name: "musique")
 cat_arts = Category.create(name: "arts")
 cat_langues = Category.create(name: "langues")
 cat_cuisine = Category.create(name: "cuisine")
+cat_artisanat = Category.create(name: "artisanat")
 
 sport_activities = %w[yoga ski fitness nage]
 
@@ -46,4 +49,10 @@ cuisine_activities = %w[cuisine-thaï cuisine-italienne]
 
 cuisine_activities.each do |name|
   Activity.create(name: name, category: cat_cuisine)
+end
+
+artisanat_activities = %w[couture macramé encadrement]
+
+artisanat_activities.each do |name|
+  Activity.create(name: name, category: cat_artisanat)
 end

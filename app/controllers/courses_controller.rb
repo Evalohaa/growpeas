@@ -38,6 +38,42 @@ class CoursesController < ApplicationController
     redirect_to courses_path
   end
 
+  def arts
+    category = Category.where(name: "arts")
+    activity = Activity.where(category: category)
+    @courses = Course.where(activity: activity)
+  end
+
+  def artisanat
+    category = Category.where(name: "artisanat")
+    activity = Activity.where(category: category)
+    @courses = Course.where(activity: activity)
+  end
+
+  def cuisine
+    category = Category.where(name: "cuisine")
+    activity = Activity.where(category: category)
+    @courses = Course.where(activity: activity)
+  end
+
+  def sport
+    category = Category.where(name: "sport")
+    activity = Activity.where(category: category)
+    @courses = Course.where(activity: activity)
+  end
+
+  def musique
+    category = Category.where(name: "musique")
+    activity = Activity.where(category: category)
+    @courses = Course.where(activity: activity)
+  end
+
+  def langues
+    category = Category.where(name: "langues")
+    activity = Activity.where(category: category)
+    @courses = Course.where(activity: activity)
+  end
+
   private
 
   def course_params
