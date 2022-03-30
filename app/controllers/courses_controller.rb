@@ -1,4 +1,5 @@
 class CoursesController < ApplicationController
+  skip_before_action :authenticate_user!, only: %i[index arts artisanat cuisine langues musique sport]
 
   def index
     @courses = Course.all
