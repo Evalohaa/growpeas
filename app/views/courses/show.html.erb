@@ -15,5 +15,6 @@
                     course_path(@course),
                     method: :delete,
                     data: { confirm: "Are you sure?" } %>
+
 <%= link_to "Modifier", edit_course_path(@course) %>
 <%= link_to "Add a reservation", new_course_reservation_path(@course)%>
