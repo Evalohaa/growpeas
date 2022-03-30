@@ -1,6 +1,12 @@
 <h1>Cours</h1>
 <h2><%= @course.name %></h2>
 
+<% if @course.photo.attached? %>
+<%= cl_image_tag @course.photo.key, height: 300, width: 400, crop: :fill %>
+<% else %>
+<%= image_tag 'icon_growpeas.png'%>
+<% end %>
+
 <%= @course.name %>
   <%= @course.name %>
   <%= @course.duration %>

@@ -1,0 +1,9 @@
+<h1>Cours d'artisanat:</h1>
+<% @courses.each do |course| %>
+<li>
+  <%= course.name %>
+  <%= link_to "Voir les détails du cours", course_path(course) %>
+</li>
+<% end %>
+<%= link_to "Créer un nouveau cours", new_course_path %>
+<%= link_to "My account", user_path(current_user) %>

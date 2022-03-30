@@ -1,3 +1,11 @@
-<h1>Créer un nouveau cours</h1>
-<%= render "form", course: @course %>
-<%= link_to "Retour à la liste de cours", courses_path %>
+<div class="container mt-5 mb-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-6">
+      <h1>Créer un nouveau cours</h1>
+
+      <%= render "form", course: @course %>
+
+      <%= link_to "Retour à la liste de cours", courses_path %>
+    </div>
+  </div>
+</div>

@@ -5,6 +5,9 @@ Rails.application.routes.draw do
   resources :users, only: :show
   resources :courses do
     resources :reservations, only: [ :new, :create ]
+    collection do
+      get :arts, :cuisine, :artisanat, :sport, :musique, :langues
+    end
   end
   resources :reservations, only: :destroy
 end
