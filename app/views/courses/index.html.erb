@@ -12,7 +12,11 @@
         <%= image_tag "woman_sport.jpg" %>
         <div class="card-body">
           <h3 class="card-title"><%= course.name %></h3>
+          <% if course.attendee_count >= course.max_of_attendees %>
+          <p>Le cours est complet !</p>
+          <% else %>
           <p class="card-text"><%= link_to "Voir les détails du cours", course_path(course) %></p>
+          <% end %>
         </div>
       </div>
     </div>

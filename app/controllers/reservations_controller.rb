@@ -10,6 +10,9 @@ class ReservationsController < ApplicationController
     @reservation.course = @course
     @reservation.user = current_user
     if @reservation.save
+      attendee_count = @course.attendee_count
+      attendee_count += 1
+      @course.update(attendee_count: attendee_count)
       redirect_to user_path(current_user)
     else
       redirect_to new_course_reservation_path(@course)
