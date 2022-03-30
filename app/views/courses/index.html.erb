@@ -8,8 +8,12 @@
   <div class="row">
     <% @courses.each do |course| %>
     <div class="col-md-4 my-3">
-      <div class="card sport">
-        <%= image_tag "woman_sport.jpg" %>
+      <div class="card card-index">
+        <% if course.photo.attached? %>
+        <%= cl_image_tag course.photo.key, height: 300, width: 400, crop: :fill %>
+        <% else %>
+        <%= image_tag "hunter.jpg" %>
+        <% end %>
         <div class="card-body">
           <h3 class="card-title"><%= course.name %></h3>
           <p class="card-text"><%= link_to "Voir les détails du cours", course_path(course) %></p>
