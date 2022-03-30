@@ -17,9 +17,12 @@
   text-decoration: none;
   font-size: 24px;
   padding: 0px 10px;
+  transition: scale(1.1);
 }
 .footer-links a:hover {
   opacity: 1;
+  box-shadow: 5px 6px 6px 2px #e9ecef;
+  transform: scale(1.1);
 }
 .footer .fa-heart {
   color: #D23333;
