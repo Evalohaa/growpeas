@@ -1,7 +1,17 @@
 <h1>User <%=@user.id%> <%=@user.first_name%> <%=@user.last_name%></h1>
+<br>
+<h2>Course crees</h2>
+<ul><%@user.courses.each do |course|%>
+  <li><%= link_to course.name, course_path(course)%>
+<%end%>
+<br>
+<%= link_to "Créer un nouveau cours", new_course_path %>
+<br>
+<h2>Reservations</h2>
 <ul><%@user.reservations.each do |reservation|%>
-  <li><%= reservation.details%> - <%= reservation.course.name%> <%= link_to "Delete", reservation_path(reservation), method: :delete %></li>
+  <li><% if reservation.details == nil %>
+  <%= "Vous n'avez pas reserve de cours." %>
+  <%end%>
+  <%= reservation.details%> - <%= reservation.course.name%> <%= link_to "Delete", reservation_path(reservation), method: :delete %></li>
 <%end%>
 </ul>
-<%= link_to "My courses", courses_path%>
-<%= link_to "Home", root_path%>
