@@ -17,3 +17,12 @@ h2 {
   font-family: 'Amatic SC', cursive;
   font-size: 38px;
 }
+
+.dropdown {
+  transition: all 0.2s ease;
+}
+
+.dropdown:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+}

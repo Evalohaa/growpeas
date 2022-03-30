@@ -2,17 +2,19 @@
   <div class="container">
     <h1>GrowPeas</h1>
     <p>Fais germer tes nouvelles passions et découvre tous les cours autour de toi!</p>
-    <%= link_to "Inscris-toi", new_user_registration_path, class: "btn btn-success rounded-5 shadow"%>
+    <% if user_signed_in? %>
+    <% else %>
+      <%= link_to "Inscris-toi", new_user_registration_path, class: "btn btn-success rounded-5 shadow" %>
+    <% end %>
   </div>
 </div>
 <br>
 
-<div class="container mx-auto my-4">
+<div class="container">
   <div class="row">
-
-    <div class="co-12 col-sm-6 col-md-4 my-3">
+    <div class="col-12 col-md-6 col-lg-4 my-3 px-3">
       <%= link_to sport_courses_path, class: "text-decoration-none" do %>
-      <div class="card sport" style="width: 23rem;">
+      <div class="card sport">
         <%= image_tag "woman_sport.jpg" %>
         <div class="card-body">
           <h3 class="card-title">Sport</h3>
@@ -21,10 +23,9 @@
       </div>
       <% end %>
     </div>
-
-    <div class="co-12 col-sm-6 col-md-4 my-3">
+    <div class="col-12 col-md-6 col-lg-4 my-3 px-3">
       <%= link_to cuisine_courses_path, class: "text-decoration-none" do %>
-      <div class="card cuisine" style="width: 23rem;">
+      <div class="card cuisine">
         <%= image_tag "cuisine.jpg" %>
         <div class="card-body">
           <h3 class="card-title">Cuisine</h3>
@@ -33,10 +34,9 @@
       </div>
       <% end %>
     </div>
-
-    <div class="co-12 col-sm-6 col-md-4 my-3">
+    <div class="col-12 col-md-6 col-lg-4 my-3 px-3">
       <%= link_to artisanat_courses_path, class: "text-decoration-none" do %>
-      <div class="card artisanat" style="width: 23rem;">
+      <div class="card artisanat">
         <%= image_tag "artisanat.jpg" %>
         <div class="card-body">
           <h3 class="card-title">Artisanat</h3>
@@ -45,10 +45,9 @@
       </div>
       <% end %>
     </div>
-
-    <div class="co-12 col-sm-6 col-md-4 my-3">
+    <div class="col-12 col-md-6 col-lg-4 my-3 px-3">
       <%= link_to musique_courses_path, class: "text-decoration-none" do %>
-      <div class="card musique" style="width: 23rem;">
+      <div class="card musique">
         <%= image_tag "musique.jpg" %>
         <div class="card-body">
           <h3 class="card-title">Musique</h3>
@@ -57,10 +56,9 @@
       </div>
       <% end %>
     </div>
-
-    <div class="co-12 col-sm-6 col-md-4 my-3">
+    <div class="col-12 col-md-6 col-lg-4 my-3 px-3">
       <%= link_to arts_courses_path, class: "text-decoration-none" do %>
-      <div class="card arts" style="width: 23rem;">
+      <div class="card arts">
         <%= image_tag "arts.jpg" %>
         <div class="card-body">
           <h3 class="card-title">Arts</h3>
@@ -69,10 +67,9 @@
       </div>
       <% end %>
     </div>
-
-    <div class="co-12 col-sm-6 col-md-4 my-3">
+    <div class="col-12 col-md-6 col-lg-4 my-3 px-3">
       <%= link_to langues_courses_path, class: "text-decoration-none" do %>
-      <div class="card langues" style="width: 23rem;">
+      <div class="card langues">
        <%= image_tag "langues.jpg" %>
         <div class="card-body">
           <h3 class="card-title">Langues</h3>

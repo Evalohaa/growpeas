@@ -7,18 +7,19 @@
   </div>
   <div class="row">
     <% @courses.each do |course| %>
-    <div class="col-md-4 my-3">
+    <div class="col-12 col-md-4 my-3">
+      <%= link_to course_path(course), class:"text-decoration-none" do %>
       <div class="card card-index" style= "background-color: <%= course.activity.category.color  %> ">
         <% if course.photo.attached? %>
         <%= cl_image_tag course.photo.key %>
         <% else %>
-        <%= image_tag "hunter.jpg" %>
+        <%= image_tag "growpeas_blank.png" %>
         <% end %>
         <div class="card-body">
           <h3 class="card-title"><%= course.name %></h3>
-          <%= link_to "Voir les détails du cours", course_path(course), type: "button", class: "btn btn-light text-decoration-none rounded-pill shadow" %>
         </div>
       </div>
+      <% end %>
     </div>
     <% end %>
   </div>
