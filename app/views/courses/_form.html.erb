@@ -8,5 +8,6 @@
   <%= f.input :address, label: 'Adresse' %>
   <%= f.input :max_of_attendees, label: 'Nombre de participants maximum' %>
   <%= f.input :description, label: 'Description (min 100 caractères)' %>
+  <%= f.input :photo, as: :file %>
   <%= f.button :submit, 'Enregistrer', class: "btn-primary" %>
 <% end %>
