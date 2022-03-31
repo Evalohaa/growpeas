@@ -1,12 +1,10 @@
 <h1>Cours</h1>
 <h2><%= @course.name %></h2>
-
 <% if @course.photo.attached? %>
 <%= cl_image_tag @course.photo.key, height: 300, width: 400, crop: :fill %>
 <% else %>
 <%= image_tag 'icon_growpeas.png'%>
 <% end %>
-
 <%= @course.name %>
   <%= @course.name %>
   <%= @course.duration %>
@@ -16,15 +14,16 @@
   <%= @course.price %>
   <%= @course.address %>
   <%= @course.max_of_attendees %>
-<%= link_to "Retour aux cours", courses_path %>
-<%= link_to 'Supprimer',
-                    course_path(@course),
-                    method: :delete,
-                    data: { confirm: "Are you sure?" } %>
-
-<%= link_to "Modifier", edit_course_path(@course) %>
-<% if @course.attendee_count >= @course.max_of_attendees %>
-<p>Le cours est complet !</p>
-<% else %>
-<%= link_to "Add a reservation", new_course_reservation_path(@course)%>
+<% if @course.user_id == current_user.id %>
+  <%= link_to 'Supprimer',
+                      course_path(@course),
+                      method: :delete,
+                      data: { confirm: "Are you sure?" } %>
+  <%= link_to "Modifier", edit_course_path(@course) %>
 <% end %>
+<% if @course.attendee_count >= @course.max_of_attendees %>
+    <p>Le cours est complet !</p>
+<% else %>
+  <%= link_to "Add a reservation", new_course_reservation_path(@course)%>
+<% end %>
+<%= link_to "Retour aux cours", courses_path %>
