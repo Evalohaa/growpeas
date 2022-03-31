@@ -1,31 +1,38 @@
-<h1>User <%=@user.id%> <%=@user.first_name%> <%=@user.last_name%></h1>
-<br>
-<h2>Course crees</h2>
-<%@user.courses.each do |course|%>
-  <%= course.name %>
-  <%= link_to "voir détails du cours", course_path(course)%>
-  <ul>
-    <li>Nb max de participants</li>
-    <%= course.max_of_attendees %>
-    <li>Nb d'inscrits</li>
-    <%= course.attendee_count %>
-    <% if course.attendee_count != 0 %>
-      <li>Détails des participants</li>
-      <% course.reservations.each do |reservation| %>
-          <li>nom:<%= reservation.user.first_name %></li>
-          <li>commentaire:<%= reservation.details %></li>
-        <% end %>
+<div class="container">
+  <div class="row justify-content-center">
+    <h1>Bonjour <%=@user.first_name%>!</h1>
+    <div class="courses">
+      <div class="create-course d-flex align-items-center">
+        <h2 class="pe-2">Course crees</h2>
+        <%= link_to "Créer un cours", new_course_path %>
+      </div>
+      <%@user.courses.each do |course|%>
+        <div class="details d-flex ">
+          <%= course.name %>
+          <%= link_to 'détails', course_path(course)%>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">Nb max de participants | <%= course.max_of_attendees %></li>
+          <li class="list-group-item">Nb d’inscrits | <%= course.attendee_count %></li>
+          <% if course.attendee_count != 0 %>
+            <li class="list-group-item">Détails des participants</li>
+            <% course.reservations.each do |reservation| %>
+                <li class="list-group-item">nom:<%= reservation.user.first_name %></li>
+                <li class="list-group-item">commentaire:<%= reservation.details %></li>
+              <% end %>
+            <% end %>
+        </ul>
       <% end %>
-  </ul>
-<%end%>
-<br>
-<%= link_to "Créer un nouveau cours", new_course_path %>
-<br>
-<h2>Reservations</h2>
-<ul><%@user.reservations.each do |reservation|%>
-  <li><% if reservation.details == nil %>
-  <%= "Vous n'avez pas reserve de cours." %>
-  <%end%>
-  <%= reservation.details%> - <%= reservation.course.name%> <%= link_to "Delete", reservation_path(reservation), method: :delete %></li>
-<%end%>
-</ul>
+    </div>
+    <br>
+    <h2>Reservations</h2>
+    <% if @user.reservations == [] %>
+      <p><%= "Vous n'avez pas reserve de cours." %></p>
+    <% else %>
+      <ul><%@user.reservations.each do |reservation|%>
+        <li><%= reservation.details%> - <%= reservation.course.name%> <%= link_to "Delete", reservation_path(reservation), method: :delete %></li>
+      <% end %>
+      </ul>
+    <%end%>
+  </div>
+</div>
