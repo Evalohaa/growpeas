@@ -3,6 +3,14 @@ class CoursesController < ApplicationController
 
   def index
     @courses = Course.all
+
+    @markers = @courses.geocoded.map do |course|
+      {
+        lat: course.latitude,
+        lng: course.longitude,
+        info_window: render_to_string(partial: "info_window", locals: { course: course })
+      }
+    end
   end
 
   def show

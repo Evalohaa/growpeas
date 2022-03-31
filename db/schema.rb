@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_30_171540) do
+ActiveRecord::Schema.define(version: 2022_03_31_094255) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -72,6 +72,8 @@ ActiveRecord::Schema.define(version: 2022_03_30_171540) do
     t.integer "max_of_attendees"
     t.time "starting_time"
     t.integer "attendee_count", default: 0
+    t.float "latitude"
+    t.float "longitude"
     t.index ["activity_id"], name: "index_courses_on_activity_id"
     t.index ["user_id"], name: "index_courses_on_user_id"
   end
