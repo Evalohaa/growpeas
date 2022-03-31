@@ -1,20 +1,29 @@
-
 <div class="container mx-auto my-4">
   <div class="d-flex align-items-center m-3 mb-0">
     <div class="title">
-      <h1>Cours de langues</h1>
+      <h1>Tous les cours disponibles</h1>
     </div>
   </div>
   <div class="row">
     <% @courses.each do |course| %>
-    <div class="col-md-4 my-3">
-      <div class="card sport">
-        <%= image_tag "woman_sport.jpg" %>
+    <div class="col-12 col-md-4 my-3">
+      <%= link_to course_path(course), class:"text-decoration-none" do %>
+      <div class="card card-index" style= "background-color: <%= course.activity.category.color  %> ">
+        <% if course.photo.attached? %>
+        <%= cl_image_tag course.photo.key %>
+        <% else %>
+        <%= image_tag "growpeas_blank.png" %>
+        <% end %>
         <div class="card-body">
           <h3 class="card-title"><%= course.name %></h3>
-          <p class="card-text"><%= link_to "Voir les détails du cours", course_path(course) %></p>
+          <p>avec <%= course.user.first_name.capitalize %></p>
+          <p>Le <%= course.date %> à <%= course.starting_time %> </p>
+          <% if course.attendee_count >= course.max_of_attendees %>
+          <p>Le cours est complet !</p>
+          <% end %>
         </div>
       </div>
+      <% end %>
     </div>
     <% end %>
   </div>

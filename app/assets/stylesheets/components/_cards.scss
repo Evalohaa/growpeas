@@ -1,5 +1,4 @@
 .card {
-  background: #222;
   color: white;
   border: none;
   border-radius: 20px;
@@ -28,8 +27,28 @@
   text-align: center;
 }
 
+.card-profil {
+  cursor: default;
+}
+
+.list-group li{
+  color: white;
+}
+.card-profil h2{
+  color: white;
+}
+
+.card-profil:hover {
+  transform: none;
+}
+
 .card-body {
-  padding-bottom: 80px;
+  padding-bottom: 33px;
+  border-radius: 20px;
+}
+
+.card-body a{
+  color: white;
 }
 
 .sport {

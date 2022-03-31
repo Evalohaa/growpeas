@@ -1,14 +1,14 @@
 <div class="container mt-5 mb-5">
   <div class="row justify-content-center">
     <div class="col-lg-6">
-      <h1>Créer une nouvelle réservation</h1>
+      <h1>Que souhaitez-vous modifier dans votre cours ?</h1>
 
       <%= simple_form_for [@course, @reservation] do  |f| %>
         <%= f.input :details %>
         <%= f.submit%>
       <% end %>
 
-      <%= link_to "Retour à la liste de cours", courses_path, class: "btn btn-flat" %>
+      <%= link_to 'Go back to your classes', course_path %>
     </div>
   </div>
 </div>

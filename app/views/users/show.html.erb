@@ -1,17 +1,38 @@
-<h1>User <%=@user.id%> <%=@user.first_name%> <%=@user.last_name%></h1>
-<br>
-<h2>Course crees</h2>
-<ul><%@user.courses.each do |course|%>
-  <li><%= link_to course.name, course_path(course)%>
-<%end%>
-<br>
-<%= link_to "Créer un nouveau cours", new_course_path %>
-<br>
-<h2>Reservations</h2>
-<ul><%@user.reservations.each do |reservation|%>
-  <li><% if reservation.details == nil %>
-  <%= "Vous n'avez pas reserve de cours." %>
+<div class="container mt-5 mb-5">
+  <div class="row justify-content-center">
+<h1>Bonjour <%=@user.first_name%>!</h1>
+<ul>
+  <h2>Cours crées</h2>
+  <ul><%@user.courses.each do |course|%>
+    <li><%= link_to course.name, course_path(course), class: "btn btn-flat"%>
   <%end%>
-  <%= reservation.details%> - <%= reservation.course.name%> <%= link_to "Delete", reservation_path(reservation), method: :delete %></li>
-<%end%>
-</ul>
+  </ul>
+<%= link_to "Créer un cours", new_course_path, class: "btn btn-flat" %>
+
+<h2>Cours passés</h2>
+  <ul><% @user.reservations.select do |resa|%>
+    <% if resa.course.date < Time.now%>
+      <li><%=resa.course.name%> <%=link_to "Ajouter un commentaire", new_course_review_path(resa.course), class: "btn btn-flat" %></li>
+    <%end%>
+  <%end%></ul>
+
+<h2>Cours a venir</h2>
+  <ul><% @user.reservations.select do |resa|%>
+    <% if resa.course.date >= Time.now%>
+      <li><%=resa.details%> - <%=resa.course.name%> <%= link_to "Effacer", reservation_path(resa), method: :delete, class: "btn btn-flat" %>
+      <%= link_to "Editer", edit_reservation_path(resa), class: "btn btn-flat"%></li>
+    <%end%>
+  <%end%></ul>
+  </ul>
+    <br>
+    <h2>Reservations</h2>
+    <% if @user.reservations == [] %>
+      <p><%= "Vous n'avez pas reserve de cours." %></p>
+    <% else %>
+      <ul><%@user.reservations.each do |reservation|%>
+        <li><%= reservation.details%> - <%= reservation.course.name%> <%= link_to "Delete", reservation_path(reservation), method: :delete %></li>
+      <% end %>
+      </ul>
+    <%end%>
+  </div>
+</div>
