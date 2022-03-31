@@ -30,7 +30,7 @@
             <%= link_to "My account", user_path(current_user), class: "nav-link" %>
           </li>
           <li class="nav-item dropdown">
-            <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+            <%= image_tag "man-avatar.png", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
               <%= link_to "Mon Compte", user_path(current_user), class: "dropdown-item" %>
               <%= link_to "Modifier mon profil", edit_user_registration_path, class: "dropdown-item" %>
@@ -38,9 +38,9 @@
             </div>
           </li>
         <% else %>
-          <li class="nav-item"-->
-            <%= link_to "Login", new_user_session_path, class: "nav-link" %>
-          </li-->
+          <li class="nav-item">
+            <%= link_to "Login", new_user_session_path, class: "nav-link" %></li>
+          <li> <%= image_tag "avatar-blank.png", class: "avatar" %> </li>
         <% end %>
       </ul>
     </div>

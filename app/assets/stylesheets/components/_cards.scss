@@ -6,6 +6,7 @@
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   transition: all 0.2s ease;
   cursor: pointer;
+  height: 100%;
 }
 
 .card:hover {
@@ -19,6 +20,12 @@
   filter: contrast(3);
   filter: saturate(2.2);
   filter: brightness(1);
+}
+
+.card-index {
+  background-color: #C88355;
+  padding-bottom: 0;
+  text-align: center;
 }
 
 .card-body {

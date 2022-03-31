@@ -7,18 +7,22 @@
   </div>
   <div class="row">
     <% @courses.each do |course| %>
-    <div class="col-md-4 my-3">
-      <div class="card sport">
-        <%= image_tag "woman_sport.jpg" %>
+    <div class="col-12 col-md-4 my-3">
+      <%= link_to course_path(course), class:"text-decoration-none" do %>
+      <div class="card card-index" style= "background-color: <%= course.activity.category.color  %> ">
+        <% if course.photo.attached? %>
+        <%= cl_image_tag course.photo.key %>
+        <% else %>
+        <%= image_tag "growpeas_blank.png" %>
+        <% end %>
         <div class="card-body">
           <h3 class="card-title"><%= course.name %></h3>
           <% if course.attendee_count >= course.max_of_attendees %>
           <p>Le cours est complet !</p>
-          <% else %>
-          <p class="card-text"><%= link_to "Voir les détails du cours", course_path(course) %></p>
           <% end %>
         </div>
       </div>
+      <% end %>
     </div>
     <% end %>
   </div>

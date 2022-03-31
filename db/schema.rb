@@ -55,6 +55,7 @@ ActiveRecord::Schema.define(version: 2022_03_30_171540) do
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "color"
   end
 
   create_table "courses", force: :cascade do |t|
