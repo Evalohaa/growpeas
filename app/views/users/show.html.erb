@@ -24,5 +24,15 @@
     <%end%>
   <%end%></ul>
   </ul>
+    <br>
+    <h2>Reservations</h2>
+    <% if @user.reservations == [] %>
+      <p><%= "Vous n'avez pas reserve de cours." %></p>
+    <% else %>
+      <ul><%@user.reservations.each do |reservation|%>
+        <li><%= reservation.details%> - <%= reservation.course.name%> <%= link_to "Delete", reservation_path(reservation), method: :delete %></li>
+      <% end %>
+      </ul>
+    <%end%>
   </div>
 </div>

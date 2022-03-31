@@ -1,7 +1,7 @@
 <%= simple_form_for(@course) do |f| %>
   <%= f.input :name, label: 'Titre' %>
   <%= f.association :activity, label: 'Activité' %>
-  <%= f.input :date, label: 'Date' %>
+<%= f.input :date, as: :date, html5: true %>
   <%= f.input :starting_time, label: 'Horaires' %>
   <%= f.input :duration, label: 'Durée' %>
   <%= f.input :price, label: 'Prix' %>

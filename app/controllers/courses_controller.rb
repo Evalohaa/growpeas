@@ -3,6 +3,25 @@ class CoursesController < ApplicationController
 
   def index
     @courses = Course.all
+    @markers = @courses.geocoded.map do |course|
+      {
+        lat: course.latitude,
+        lng: course.longitude,
+        info_window: render_to_string(partial: "info_window", locals: { course: course })
+      }
+    if params[:query_word].present? && params[:query_date].present?
+      courses_date = Course.date_search(params[:query_date])
+      courses_d = courses_date.map { |course| course}
+      courses_word = Course.global_search(params[:query_word])
+      courses_w = courses_word.map { |course| course}
+      @courses = courses_d.intersection(courses_w)
+    elsif params[:query_word].present?
+      @courses = Course.global_search(params[:query_word])
+    elsif params[:query_date].present?
+      @courses = Course.date_search(params[:query_date])
+    else
+      @courses = Course.all
+    end
   end
 
   def show
@@ -80,6 +99,10 @@ class CoursesController < ApplicationController
   def course_params
     params.require(:course).permit(:name, :duration, :starting_time, :date, :description, :price, :address, :user_id,
       :activity_id, :max_of_attendees, :photo, :attendee_count)
+  end
+
+  def convert(element)
+    element.map {|e| e.searchable}
   end
 
 end
