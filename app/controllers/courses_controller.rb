@@ -2,7 +2,13 @@ class CoursesController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[index arts artisanat cuisine langues musique sport]
 
   def index
-    if params[:query_word].present?
+    if params[:query_word].present? && params[:query_date].present?
+      courses_date = Course.date_search(params[:query_date])
+      courses_d = courses_date.map { |course| course}
+      courses_word = Course.global_search(params[:query_word])
+      courses_w = courses_word.map { |course| course}
+      @courses = courses_d.intersection(courses_w)
+    elsif params[:query_word].present?
       @courses = Course.global_search(params[:query_word])
     elsif params[:query_date].present?
       @courses = Course.date_search(params[:query_date])
