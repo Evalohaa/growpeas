@@ -101,8 +101,5 @@ class CoursesController < ApplicationController
       :activity_id, :max_of_attendees, :photo, :attendee_count)
   end
 
-  def convert(element)
-    element.map {|e| e.searchable}
-  end
 
 end
