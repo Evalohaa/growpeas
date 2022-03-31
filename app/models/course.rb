@@ -14,4 +14,11 @@ class Course < ApplicationRecord
   validates :address, presence: true
   validates :max_of_attendees, presence: true, numericality: { greater_than_or_equal_to: 1 }
   # validates :starting_time, presence: true
+  include PgSearch::Model
+  pg_search_scope :global_search,
+                  against: [ :name, :description ],
+                  associated_against: { activity: [ :name ] },
+                  using: { tsearch: { prefix: true } }
+
+  pg_search_scope :date_search, against: :date
 end

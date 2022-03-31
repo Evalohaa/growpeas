@@ -2,7 +2,13 @@ class CoursesController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[index arts artisanat cuisine langues musique sport]
 
   def index
-    @courses = Course.all
+    if params[:query_word].present?
+      @courses = Course.global_search(params[:query_word])
+    elsif params[:query_date].present?
+      @courses = Course.date_search(params[:query_date])
+    else
+      @courses = Course.all
+    end
   end
 
   def show
@@ -80,6 +86,10 @@ class CoursesController < ApplicationController
   def course_params
     params.require(:course).permit(:name, :duration, :starting_time, :date, :description, :price, :address, :user_id,
       :activity_id, :max_of_attendees, :photo, :attendee_count)
+  end
+
+  def convert(element)
+    element.map {|e| e.searchable}
   end
 
 end
