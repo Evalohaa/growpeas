@@ -10,7 +10,7 @@
 <%= @course.name %>
   <%= @course.name %>
   <%= @course.duration %>
-  <%= @course.starting_time %>
+  <%= @course.starting_time.strftime("%I:%M") %>
   <%= @course.date %>
   <%= @course.description %>
   <%= @course.price %>
