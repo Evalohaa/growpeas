@@ -16,15 +16,22 @@
   <%= @course.price %>
   <%= @course.address %>
   <%= @course.max_of_attendees %>
-<%= link_to "Retour aux cours", courses_path %>
+<%= link_to "Retour aux cours", courses_path, class: "btn btn-flat" %>
 <%= link_to 'Supprimer',
                     course_path(@course),
-                    method: :delete,
+                    method: :delete, class: "btn btn-flat",
                     data: { confirm: "Are you sure?" } %>
 
-<%= link_to "Modifier", edit_course_path(@course) %>
-<% if @course.attendee_count >= @course.max_of_attendees %>
+<%= link_to "Modifier", edit_course_path(@course), class: "btn btn-flat" %>
+<%if @course.date <= Time.now %>
+<p>Le cours n'est plus disponible.</p>
+<% elsif @course.attendee_count >= @course.max_of_attendees %>
 <p>Le cours est complet !</p>
 <% else %>
-<%= link_to "Add a reservation", new_course_reservation_path(@course)%>
+<%= link_to "Add a reservation", new_course_reservation_path(@course), class: "btn btn-flat"%>
 <% end %>
+
+<h3>Reviews</h3>
+<ul><% @course.reviews.each do |review|%>
+  <li><%=review.rating%> - <%=review.content%></li> - <%= link_to "Update", edit_review_path(review), class: "btn btn-flat"%>
+<%end%></ul>

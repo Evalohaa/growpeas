@@ -1,7 +1,11 @@
 class ReservationsController < ApplicationController
   def new
     @course = Course.find(params[:course_id])
-    @reservation = Reservation.new
+    if @course.date > Time.now
+      @reservation = Reservation.new
+    else
+      redirect_to course_path(@course)
+    end
   end
 
   def create
@@ -17,6 +21,16 @@ class ReservationsController < ApplicationController
     else
       redirect_to new_course_reservation_path(@course)
     end
+  end
+
+  def edit
+    @reservation = Reservation.find(params[:id])
+  end
+
+  def update
+    @reservation = Reservation.find(params[:id])
+    @reservation.update(params_reservation)
+    redirect_to user_path(current_user)
   end
 
   def destroy
