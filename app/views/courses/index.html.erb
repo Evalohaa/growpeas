@@ -17,6 +17,9 @@
         <% end %>
         <div class="card-body">
           <h3 class="card-title"><%= course.name %></h3>
+          <% if course.attendee_count >= course.max_of_attendees %>
+          <p>Le cours est complet !</p>
+          <% end %>
         </div>
       </div>
       <% end %>
