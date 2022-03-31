@@ -1,2 +1,4 @@
 <h2 style= "color: <%= course.activity.category.color  %>"><%= course.name %></h2>
 <p><%= course.address %></p>
+
+<%= link_to "Découvre", course_path(course) %>

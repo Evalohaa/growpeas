@@ -1,14 +1,8 @@
-.content{
-  display: flex;
+#map {
+  position: sticky;
+  top: 75px;
 }
 
-.cards {
-  flex-grow: 1;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: 16px;
-  padding: 16px;
-}
 .mapboxgl-popup {
   max-width: 200px;
 }
