@@ -1,29 +1,29 @@
-<div class="container">
+<div class="container mt-5 mb-5">
   <div class="row justify-content-center">
-    <h1>Bonjour <%=@user.first_name%>!</h1>
-    <div class="courses">
-      <div class="create-course d-flex align-items-center">
-        <h2 class="pe-2">Course crees</h2>
-        <%= link_to "Créer un cours", new_course_path %>
-      </div>
-      <%@user.courses.each do |course|%>
-        <div class="details d-flex ">
-          <%= course.name %>
-          <%= link_to 'détails', course_path(course)%>
-        </div>
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item">Nb max de participants | <%= course.max_of_attendees %></li>
-          <li class="list-group-item">Nb d’inscrits | <%= course.attendee_count %></li>
-          <% if course.attendee_count != 0 %>
-            <li class="list-group-item">Détails des participants</li>
-            <% course.reservations.each do |reservation| %>
-                <li class="list-group-item">nom:<%= reservation.user.first_name %></li>
-                <li class="list-group-item">commentaire:<%= reservation.details %></li>
-              <% end %>
-            <% end %>
-        </ul>
-      <% end %>
-    </div>
+<h1>Bonjour <%=@user.first_name%>!</h1>
+<ul>
+  <h2>Cours crées</h2>
+  <ul><%@user.courses.each do |course|%>
+    <li><%= link_to course.name, course_path(course), class: "btn btn-flat"%>
+  <%end%>
+  </ul>
+<%= link_to "Créer un cours", new_course_path, class: "btn btn-flat" %>
+
+<h2>Cours passés</h2>
+  <ul><% @user.reservations.select do |resa|%>
+    <% if resa.course.date < Time.now%>
+      <li><%=resa.course.name%> <%=link_to "Ajouter un commentaire", new_course_review_path(resa.course), class: "btn btn-flat" %></li>
+    <%end%>
+  <%end%></ul>
+
+<h2>Cours a venir</h2>
+  <ul><% @user.reservations.select do |resa|%>
+    <% if resa.course.date >= Time.now%>
+      <li><%=resa.details%> - <%=resa.course.name%> <%= link_to "Effacer", reservation_path(resa), method: :delete, class: "btn btn-flat" %>
+      <%= link_to "Editer", edit_reservation_path(resa), class: "btn btn-flat"%></li>
+    <%end%>
+  <%end%></ul>
+  </ul>
     <br>
     <h2>Reservations</h2>
     <% if @user.reservations == [] %>

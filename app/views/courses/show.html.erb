@@ -36,3 +36,8 @@
     </div>
   </div>
 </div>
+
+<h3>Reviews</h3>
+<ul><% @course.reviews.each do |review|%>
+  <li><%=review.rating%> - <%=review.content%></li> - <%= link_to "Update", edit_review_path(review), class: "btn btn-flat"%>
+<%end%></ul>
