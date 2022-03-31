@@ -9,6 +9,7 @@ class CoursesController < ApplicationController
         lng: course.longitude,
         info_window: render_to_string(partial: "info_window", locals: { course: course })
       }
+    end
     if params[:query_word].present? && params[:query_date].present?
       courses_date = Course.date_search(params[:query_date])
       courses_d = courses_date.map { |course| course}
@@ -100,6 +101,5 @@ class CoursesController < ApplicationController
     params.require(:course).permit(:name, :duration, :starting_time, :date, :description, :price, :address, :user_id,
       :activity_id, :max_of_attendees, :photo, :attendee_count)
   end
-
 
 end
