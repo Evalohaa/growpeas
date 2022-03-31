@@ -13,7 +13,7 @@
     <div class="list-profil">
       <ul class="list-group list-group-flush">
         <li class="list-group-item" style= "background-color: <%= @course.activity.category.color  %>">Le <%= @course.date %></li>
-        <li class="list-group-item" style= "background-color: <%= @course.activity.category.color  %>"><%= @course.starting_time %></li>
+        <li class="list-group-item" style= "background-color: <%= @course.activity.category.color  %>"><%= @course.starting_time.strftime("%I:%M") %></li>
         <li class="list-group-item" style= "background-color: <%= @course.activity.category.color  %>">Prix: <%= @course.price %>€</li>
         <li class="list-group-item" style= "background-color: <%= @course.activity.category.color  %>">Adresse: <%= @course.address %></li>
         <li class="list-group-item" style= "background-color: <%= @course.activity.category.color  %>">Max. Participants: <%= @course.max_of_attendees %></li>
@@ -36,7 +36,6 @@
     </div>
   </div>
 </div>
-
 <h3>Reviews</h3>
 <ul><% @course.reviews.each do |review|%>
   <li><%=review.rating%> - <%=review.content%></li> - <%= link_to "Update", edit_review_path(review), class: "btn btn-flat"%>
