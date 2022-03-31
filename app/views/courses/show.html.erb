@@ -23,4 +23,8 @@
                     data: { confirm: "Are you sure?" } %>
 
 <%= link_to "Modifier", edit_course_path(@course) %>
+<% if @course.attendee_count >= @course.max_of_attendees %>
+<p>Le cours est complet !</p>
+<% else %>
 <%= link_to "Add a reservation", new_course_reservation_path(@course)%>
+<% end %>
