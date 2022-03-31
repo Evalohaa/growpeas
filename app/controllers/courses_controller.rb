@@ -2,6 +2,13 @@ class CoursesController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[index arts artisanat cuisine langues musique sport]
 
   def index
+    @courses = Course.all
+    @markers = @courses.geocoded.map do |course|
+      {
+        lat: course.latitude,
+        lng: course.longitude,
+        info_window: render_to_string(partial: "info_window", locals: { course: course })
+      }
     if params[:query_word].present? && params[:query_date].present?
       courses_date = Course.date_search(params[:query_date])
       courses_d = courses_date.map { |course| course}
