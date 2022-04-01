@@ -1,11 +1,11 @@
 class ReservationsController < ApplicationController
   def new
     @course = Course.find(params[:course_id])
-    if @course.date > Time.now
+    # if @course.date > Time.now
       @reservation = Reservation.new
-    else
-      redirect_to course_path(@course)
-    end
+    # else
+      # redirect_to course_path(@course)
+    # end
   end
 
   def create
