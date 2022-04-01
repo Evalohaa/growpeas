@@ -63,36 +63,78 @@ class CoursesController < ApplicationController
     category = Category.where(name: "arts")
     activity = Activity.where(category: category)
     @courses = Course.where(activity: activity)
+    @markers = @courses.geocoded.map do |course|
+      {
+        lat: course.latitude,
+        lng: course.longitude,
+        info_window: render_to_string(partial: "info_window", locals: { course: course })
+      }
+    end
   end
 
   def artisanat
     category = Category.where(name: "artisanat")
     activity = Activity.where(category: category)
     @courses = Course.where(activity: activity)
+    @markers = @courses.geocoded.map do |course|
+      {
+        lat: course.latitude,
+        lng: course.longitude,
+        info_window: render_to_string(partial: "info_window", locals: { course: course })
+      }
+    end
   end
 
   def cuisine
     category = Category.where(name: "cuisine")
     activity = Activity.where(category: category)
     @courses = Course.where(activity: activity)
+    @markers = @courses.geocoded.map do |course|
+      {
+        lat: course.latitude,
+        lng: course.longitude,
+        info_window: render_to_string(partial: "info_window", locals: { course: course })
+      }
+    end
   end
 
   def sport
     category = Category.where(name: "sport")
     activity = Activity.where(category: category)
     @courses = Course.where(activity: activity)
+    @markers = @courses.geocoded.map do |course|
+      {
+        lat: course.latitude,
+        lng: course.longitude,
+        info_window: render_to_string(partial: "info_window", locals: { course: course })
+      }
+    end
   end
 
   def musique
     category = Category.where(name: "musique")
     activity = Activity.where(category: category)
     @courses = Course.where(activity: activity)
+    @markers = @courses.geocoded.map do |course|
+      {
+        lat: course.latitude,
+        lng: course.longitude,
+        info_window: render_to_string(partial: "info_window", locals: { course: course })
+      }
+    end
   end
 
   def langues
     category = Category.where(name: "langues")
     activity = Activity.where(category: category)
     @courses = Course.where(activity: activity)
+    @markers = @courses.geocoded.map do |course|
+      {
+        lat: course.latitude,
+        lng: course.longitude,
+        info_window: render_to_string(partial: "info_window", locals: { course: course })
+      }
+    end
   end
 
   private
