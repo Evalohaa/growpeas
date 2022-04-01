@@ -2,7 +2,6 @@ class Course < ApplicationRecord
   belongs_to :user
   belongs_to :activity
   has_many :reservations, dependent: :destroy
-  has_many :categories, through: :activities
   has_one_attached :photo
   has_many :reviews, dependent: :destroy
   geocoded_by :address
@@ -16,11 +15,12 @@ class Course < ApplicationRecord
   validates :price, presence: true, numericality: { greater_than_or_equal_to: 1 }
   validates :address, presence: true
   validates :max_of_attendees, presence: true, numericality: { greater_than_or_equal_to: 1 }
+  validates :cat, presence: true
   # validates :starting_time, presence: true
   include PgSearch::Model
   pg_search_scope :global_search,
-                  against: [ :name, :description ],
-                  associated_against: { activity: [ :name ] },
+                  against: [ :name, :description, :cat ],
+                  associated_against: { activity: [ :name ]},
                   using: { tsearch: { prefix: true } }
 
   pg_search_scope :date_search, against: :date
