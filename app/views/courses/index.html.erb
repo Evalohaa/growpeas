@@ -1,11 +1,12 @@
 <div class="container-fluid mx-auto my-0">
+  <div class="row">
 
-  <p>Search by keyword</p>
-  <%= form_tag courses_path, method: :get do %>
+    <div class="col-6">
+      <%= form_tag courses_path, method: :get do %>
     <%= text_field_tag :query_word,
       params[:query_word],
       class: "form-control",
-      placeholder: "Find a course"
+      placeholder: "Que voulez-vous faire ?"
     %>
     <%= date_field_tag :query_date,
       params[:query_date],
@@ -13,10 +14,8 @@
       placeholder: "Find a course"
     %>
     <%= submit_tag "Search", class: "btn btn-primary" %>
-  <% end %>
 
-  <div class="row">
-    <div class="col-6">
+  <% end %>
       <div class="d-flex align-items-center m-3 mb-0">
         <div class="title">
           <h1>Tous les cours disponibles</h1>

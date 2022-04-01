@@ -1,6 +1,7 @@
 <%= simple_form_for(@course) do |f| %>
   <%= f.input :name, label: 'Titre' %>
   <%= f.association :activity, label: 'Activité' %>
+  <%= f.input :cat, label: 'Category', collection: ["sport", "musique", "arts", "langues", "cuisine", "artisanat"]%>
 <%= f.input :date, as: :date, html5: true %>
   <%= f.input :starting_time, label: 'Horaires' %>
   <%= f.input :duration, label: 'Durée' %>

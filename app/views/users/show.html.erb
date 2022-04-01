@@ -1,8 +1,12 @@
 <div class="container mt-5 mb-5">
   <div class="row justify-content-center">
 <h1>Bonjour <%=@user.first_name%>!</h1>
-<h2>Cours créés (je suis le prof !)</h2>
+<h2>Cours créés (je suis le prof!)</h2>
   <h3>Cours créés à venir :</h3>
+  <% if @user.courses.blank? %>
+<p>Vous n'avez aucun cours à venir. <%= link_to "Créez un cours !", new_course_path %></p>
+
+<% else %>
   <ul><%@user.courses.each do |course|%>
   <% if course.date >= Time.now %>
     <li>
@@ -18,9 +22,13 @@
     </li>
     <%end%>
   <%end%>
+  <% end %>
   </ul>
 
 <h3>Cours créés passés :</h3>
+  <% if @user.courses.blank? %>
+<p>Vous n'avez aucun cours passé.</p>
+<% else %>
   <ul><%@user.courses.each do |course|%>
   <% if course.date < Time.now %>
     <li>
@@ -33,10 +41,14 @@
     <%end%>
   <%end%>
   </ul>
+  <% end %>
 
 
 <h2>Mes réservations (je suis l'élève!)</h2>
 <h3>Mes réservations à venir :</h3>
+<% if @user.reservations.blank? %>
+<p>Vous n'avez aucune réservation à venir. <%= link_to "Réservez un cours !", courses_path %></p>
+<% else %>
   <ul><% @user.reservations.select do |resa|%>
     <% if resa.course.date >= Time.now%>
       <li><%=resa.course.name%> - <%=resa.course.date%> à <%=resa.course.starting_time%> <%= link_to "Annuler ma réservation", reservation_path(resa), method: :delete, class: "btn btn-flat" %>
@@ -44,13 +56,18 @@
     <%end%>
   <%end%></ul>
   </ul>
+  <% end %>
 
 <h3>Mes réservations passées :</h3>
+<% if @user.reservations.blank? %>
+<p>Vous n'avez aucune réservation passée.</p>
+<% else %>
   <ul><% @user.reservations.select do |resa|%>
     <% if resa.course.date < Time.now%>
       <li><%=resa.course.name%> <%=link_to "Ajouter un commentaire", new_course_review_path(resa.course), class: "btn btn-flat" %></li>
     <%end%>
   <%end%></ul>
+  <% end %>
     <br>
   </div>
 </div>
