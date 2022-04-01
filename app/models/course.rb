@@ -15,7 +15,7 @@ class Course < ApplicationRecord
   validates :price, presence: true, numericality: { greater_than_or_equal_to: 1 }
   validates :address, presence: true
   validates :max_of_attendees, presence: true, numericality: { greater_than_or_equal_to: 1 }
-  validates :cat, presence: true
+  # validates :cat, presence: true
   # validates :starting_time, presence: true
   include PgSearch::Model
   pg_search_scope :global_search,
