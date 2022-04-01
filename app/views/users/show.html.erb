@@ -2,9 +2,9 @@
   <div class="row justify-content-center">
 <h1>Bonjour <%=@user.first_name%>!</h1>
 <h2>Cours créés (je suis le prof!)</h2>
-  <h3>Cours créés à venir :</h3>
+  <h4>Cours créés à venir :</h4>
   <% if @user.courses.blank? %>
-<p>Vous n'avez aucun cours à venir. <%= link_to "Créez un cours !", new_course_path %></p>
+<p>Vous n'avez aucun cours à venir. <%= link_to "Créez un cours !", new_course_path, class: "btn btn-flat" %></p>
 
 <% else %>
   <ul><%@user.courses.each do |course|%>
@@ -25,7 +25,7 @@
   <% end %>
   </ul>
 
-<h3>Cours créés passés :</h3>
+<h4>Cours créés passés :</h4>
   <% if @user.courses.blank? %>
 <p>Vous n'avez aucun cours passé.</p>
 <% else %>
@@ -45,7 +45,7 @@
 
 
 <h2>Mes réservations (je suis l'élève!)</h2>
-<h3>Mes réservations à venir :</h3>
+<h4>Mes réservations à venir :</h4>
 <% if @user.reservations.blank? %>
 <p>Vous n'avez aucune réservation à venir. <%= link_to "Réservez un cours !", courses_path %></p>
 <% else %>
@@ -58,13 +58,13 @@
   </ul>
   <% end %>
 
-<h3>Mes réservations passées :</h3>
+<h4>Mes réservations passées :</h4>
 <% if @user.reservations.blank? %>
 <p>Vous n'avez aucune réservation passée.</p>
 <% else %>
   <ul><% @user.reservations.select do |resa|%>
     <% if resa.course.date < Time.now%>
-      <li><%=resa.course.name%> <%=link_to "Ajouter un commentaire", new_course_review_path(resa.course), class: "btn btn-flat" %></li>
+      <li><%=resa.course.name%> <%=link_to "Laisser une review", new_course_review_path(resa.course), class: "btn btn-flat" %></li>
     <%end%>
   <%end%></ul>
   <% end %>
