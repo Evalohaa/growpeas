@@ -24,21 +24,25 @@
         <%= link_to 'Supprimer',
                         course_path(@course),
                         method: :delete,
-                        data: { confirm: "Are you sure?" }, class: "btn btn light" %>
-          <%= link_to "Modifier", edit_course_path(@course), class: "btn btn light" %>
+                        data: { confirm: "Are you sure?" }, class: "text-decoration-none" %>
+          <%= link_to "Modifier", edit_course_path(@course), class: "text-decoration-none" %>
       <% end %>
       <% if @course.date <= Time.now %>
       <p>Le cours n'est plus disponible !</p>
       <% elsif @course.attendee_count >= @course.max_of_attendees && @course.user != current_user %>
         <p>Le cours est complet !</p>
       <% elsif @course.user != current_user %>
-        <%= link_to "Add a reservation", new_course_reservation_path(@course), class: "btn btn light" %>
+        <%= link_to "Add a reservation", new_course_reservation_path(@course), class: "text-decoration-none" %>
       <% end %>
-      <%= link_to "Retour aux cours", courses_path, class: "btn btn light" %>
+      <%= link_to "Retour aux cours", courses_path, class: "text-decoration-none" %>
+    </div>
+    <div class="card-body">
+      <h3>Reviews</h3>
+      <ul><% @course.reviews.each do |review|%>
+        <li> <strong>Commentaire:</strong>  <%=review.content%></li>
+        <li><strong>Note:</strong> <%=review.rating%><i class="fas fa-star"></i></li>
+        <%end%>
+      </ul>
     </div>
   </div>
 </div>
-<h3>Reviews</h3>
-<ul><% @course.reviews.each do |review|%>
-  <li><%=review.rating%> - <%=review.content%></li> - <%= link_to "Update", edit_review_path(review), class: "btn btn-flat"%>
-<%end%></ul>
