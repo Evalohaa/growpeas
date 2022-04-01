@@ -2,6 +2,7 @@
   <div class="row">
 
     <div class="col-6">
+    <p>Cherchez un cours :</p>
       <%= form_tag courses_path, method: :get do %>
     <%= text_field_tag :query_word,
       params[:query_word],
